@@ -1,6 +1,7 @@
 from stats import get_num_words #Importiert aus stats(.py) die get_num_words funktion
 from stats import cc
 from stats import sort_on
+import sys
 
 def main(book_path):
     
@@ -33,4 +34,14 @@ def get_book_text(book_path):
     return book_content
 
 #def main() wird ausgeführt
-main("/home/nerdnarok/gitgram/bookbot/books/frankenstein.txt")
+if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+
+book_path = sys.argv[1]
+
+main(book_path)
+
+
+print(f"debug: sys.argv -- sys.argv[0] = {sys.argv[0]} -- sys.argv[1] = {sys.argv[1]}")
+#main(sys.argv[1])
